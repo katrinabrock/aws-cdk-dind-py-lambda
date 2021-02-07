@@ -1,0 +1,1 @@
+aws-cdk.aws-lambda-python==1.86.0

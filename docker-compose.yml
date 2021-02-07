@@ -1,0 +1,11 @@
+services:
+  runner:
+    image: local/cdk-test
+    volumes:
+      # Use host creds
+      - ~/.aws:/root/.aws
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Added this in an attempt to use @alekitto's workaround
+      # https://github.com/aws/aws-cdk/issues/8799#issuecomment-652273809
+      # Still not working, I believe because of this change https://github.com/aws/aws-cdk/pull/8601
+      - /tmp:/tmp
