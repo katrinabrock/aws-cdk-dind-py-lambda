@@ -14,5 +14,5 @@ class ToyCdkStack(core.Stack):
             self,
             'MyPythonLambda',
             runtime=_lambda.Runtime.PYTHON_3_8,
-            entry = '/opt/toy-cdk/lambda/'
+            entry = './lambda/'
         )
