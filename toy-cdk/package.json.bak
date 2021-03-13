@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "aws-cdk": "1.88.0",
+    "yarn": "^1.22.10"
+  },
+  "resolutions": {
+    "archiver": "5.2.0",
+    "crc32-stream": "4.0.2"
+  }
+}

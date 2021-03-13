@@ -1,13 +1,24 @@
-This project is non-working.
+This project is a proof of concept for
 
-**UPDATE:** Resolved AWS aws-cdk issue number #12536  This stack works locally (on OS X). Still trying to sort out the docker in docker part.
+- running aws-cdk in docker
+- using python language aws-cdk
+- deploying python lambda using 
 
-Created in an attempt to repro or solve https://github.com/aws/aws-cdk/issues/12536 Many people are posting on the issue both success and failure with various versions of node/cdk/archiver. Wanted to find a definitely working combo isolated in docker env.
 
-Unfortunately, hit this issue: https://github.com/aws/aws-cdk/issues/8799 first.
+The stack works locally on Mac OS X with exact same versions of node/cdk/crc32-stream/archive. However, when attempting with docker in docker, I am still hitting this issue https://github.com/aws/aws-cdk/issues/12536.
+
+Scripts are adapted from this repo: https://github.com/iliapolo/aws-cdk-issue12536
+
+**Important**: Running this will deploy a stack using your local AWS credentials without asking for confirmation.
 
 ```
-docker build -t local/cdk-test .
+mkdir -p /tmp/toy-cdk/cdk.out
+
 docker-compose up
 ```
 
+`wipe.sh` (run outside docker) clears out the problematic assets both locally and from s3. Beware, it removes all assets in the staging container.
+
+Learnings from this exercise:
+- (see [this post](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
+- Limitation: cdk.out must have the same path on host and docker container. https://github.com/aws/aws-cdk/issues/8799
