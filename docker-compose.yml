@@ -1,7 +1,5 @@
 services:
   runner:
-    environment:
-      - AWS_PROFILE=sunbasket-staging
     build: .
     volumes:
       # Use host creds
